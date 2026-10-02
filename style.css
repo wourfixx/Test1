@@ -1,0 +1,38 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(135deg,#0f0f1e,#1a1a2e);color:#e0e0e0;min-height:100vh;padding:20px}
+.container{max-width:1200px;margin:0 auto}
+header{text-align:center;margin-bottom:30px}
+h1{font-size:2.5em;background:linear-gradient(135deg,#00d4ff,#ff00e5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.subtitle{color:#888}
+.upload-zone{border:3px dashed #333;border-radius:20px;padding:60px 20px;text-align:center;transition:.3s;cursor:pointer;background:rgba(255,255,255,.02)}
+.upload-zone:hover,.upload-zone.dragover{border-color:#00d4ff;background:rgba(0,212,255,.05);transform:translateY(-2px)}
+.upload-icon{font-size:4em;display:block;margin-bottom:20px}
+.upload-content p{font-size:1.1em;margin-bottom:10px}
+.upload-content button{background:linear-gradient(135deg,#00d4ff,#0088ff);border:none;color:#fff;padding:10px 24px;border-radius:8px;cursor:pointer;font-weight:600;font-size:1em}
+.hint{color:#666;font-size:.9em}
+.editor{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px}
+@media(max-width:900px){.editor{grid-template-columns:1fr}}
+.video-preview{background:#1a1a2e;border-radius:16px;padding:20px;border:1px solid #333}
+.video-preview video{width:100%;border-radius:10px;background:#000}
+.file-info{display:flex;justify-content:space-between;margin-top:15px;color:#888;font-size:.9em;padding:0 5px}
+.metadata-form{background:#1a1a2e;border-radius:16px;padding:25px;border:1px solid #333}
+.metadata-form h2{font-size:1.2em;margin:20px 0 20px;color:#00d4ff;border-bottom:1px solid #333;padding-bottom:10px}
+.metadata-form h2:first-child{margin-top:0}
+.form-group{margin-bottom:15px}
+.form-group label{display:block;margin-bottom:6px;color:#aaa;font-size:.9em}
+.form-group input,.form-group select{width:100%;padding:10px 12px;background:#0f0f1e;border:1px solid #333;border-radius:8px;color:#e0e0e0;font-size:.95em}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:#00d4ff;box-shadow:0 0 0 3px rgba(0,212,255,.1)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.checkbox-group label{display:flex;align-items:center;gap:10px;cursor:pointer;color:#ccc}
+.checkbox-group input{width:18px;height:18px;accent-color:#00d4ff;cursor:pointer}
+.actions{grid-column:1/-1;display:flex;gap:15px;margin-top:20px}
+.btn-primary,.btn-secondary{padding:15px 30px;border:none;border-radius:12px;font-size:1.1em;font-weight:600;cursor:pointer;flex:1}
+.btn-primary{background:linear-gradient(135deg,#00d4ff,#0088ff);color:#fff;box-shadow:0 4px 20px rgba(0,212,255,.3)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.btn-secondary{background:#2a2a3e;color:#e0e0e0;border:1px solid #444}
+.progress{grid-column:1/-1;background:#1a1a2e;border-radius:12px;padding:20px;border:1px solid #333}
+.progress-bar{height:8px;background:linear-gradient(90deg,#00d4ff,#ff00e5);border-radius:4px;width:0;transition:width .3s;margin-bottom:10px}
+#progressText{color:#888;font-size:.9em}
+.log{grid-column:1/-1;background:#0a0a15;border:1px solid #333;border-radius:12px;padding:15px;font-family:'Courier New',monospace;font-size:.85em;color:#0f0;max-height:200px;overflow-y:auto;display:none;white-space:pre-wrap}
+.log.visible{display:block}
+.log .error{color:#ff4444}.log .success{color:#44ff44}.log .info{color:#44aaff}
