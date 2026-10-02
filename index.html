@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Metadata Editor — уникализация видео</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🎬 Video Metadata Editor</h1>
+<p class="subtitle">Изменение метаданных + перекодирование для уникализации</p>
+</header>
+
+<div class="upload-zone" id="uploadZone">
+<input type="file" id="fileInput" accept="video/*" hidden>
+<div class="upload-content">
+<span class="upload-icon">📁</span>
+<p>Перетащи видео сюда или <button id="browseBtn" type="button">выбери файл</button></p>
+<p class="hint">MP4 · MOV · AVI · MKV · WebM</p>
+</div>
+</div>
+
+<div class="editor" id="editor" style="display:none;">
+<div class="video-preview">
+<video id="preview" controls></video>
+<div class="file-info">
+<span id="fileName"></span>
+<span id="fileSize"></span>
+</div>
+</div>
+
+<div class="metadata-form">
+<h2>Метаданные</h2>
+<div class="form-group"><label>Название (title)</label><input type="text" id="metaTitle" placeholder="My Video"></div>
+<div class="form-group"><label>Автор (artist)</label><input type="text" id="metaArtist" placeholder="Author"></div>
+<div class="form-group"><label>Комментарий (comment)</label><input type="text" id="metaComment" placeholder="Comment"></div>
+<div class="form-group"><label>Дата (date)</label><input type="text" id="metaDate" placeholder="2026-10-02"></div>
+<div class="form-group"><label>GPS</label><input type="text" id="metaGPS" placeholder="55.7558, 37.6173"></div>
+<div class="form-group"><label>Софт (encoder)</label><input type="text" id="metaEncoder" placeholder="Lavf58.76.100"></div>
+
+<h2>Перекодирование</h2>
+<div class="form-row">
+<div class="form-group"><label>Разрешение</label>
+<select id="resSelect">
+<option value="original">Оригинал</option>
+<option value="1920x1080">1920x1080</option>
+<option value="1280x720">1280x720</option>
+<option value="1080x1920">1080x1920 (вертикальное)</option>
+<option value="720x1280">720x1280 (вертикальное)</option>
+<option value="640x480">640x480</option>
+</select></div>
+<div class="form-group"><label>FPS</label>
+<select id="fpsSelect">
+<option value="original">Оригинал</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="30">30</option>
+<option value="60">60</option>
+</select></div>
+</div>
+
+<div class="form-row">
+<div class="form-group"><label>Битрейт (kbps)</label><input type="number" id="bitrateInput" value="2000" min="500" max="20000"></div>
+<div class="form-group"><label>Кодек</label>
+<select id="codecSelect">
+<option value="h264">H.264</option>
+<option value="h265">H.265 (HEVC)</option>
+<option value="vp9">VP9</option>
+</select></div>
+</div>
+
+<div class="form-group checkbox-group"><label><input type="checkbox" id="stripAll" checked> Удалить ВСЕ метаданные</label></div>
+<div class="form-group checkbox-group"><label><input type="checkbox" id="stripAudio" checked> Изменить аудио (pitch +4, speed +5%)</label></div>
+<div class="form-group checkbox-group"><label><input type="checkbox" id="addNoise"> Лёгкий шум</label></div>
+<div class="form-group checkbox-group"><label><input type="checkbox" id="mirror"> Зеркалировать (hflip)</label></div>
+<div class="form-group checkbox-group"><label><input type="checkbox" id="rotate"> Повернуть на 1°</label></div>
+</div>
+
+<div class="actions">
+<button id="processBtn" class="btn-primary" type="button">⚡ Обработать и скачать</button>
+<button id="resetBtn" class="btn-secondary" type="button">↺ Сбросить</button>
+</div>
+
+<div class="progress" id="progress" style="display:none;">
+<div class="progress-bar" id="progressBar"></div>
+<span id="progressText">Обработка...</span>
+</div>
+
+<div class="log" id="log"></div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
